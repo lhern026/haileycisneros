@@ -4,11 +4,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "#FF6363",
-        secondary: "#FFA600",
-        accent: "#3A86FF",
-        background: "#F7F9FB",
-        text: "#333",
+        primary: "#FF6B6B", // Soft pink
+        secondary: "#FFA600", // Vibrant orange
+        accent: "#4DD0E1", // Light turquoise
+        background: "#F0F0F0", // Light gray
+        text: "#333", // Dark gray for text
       },
       fontFamily: {
         sans: ["Nunito", "sans-serif"],

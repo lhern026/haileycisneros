@@ -19,7 +19,7 @@ const itemVariants = {
 
 function Contact() {
   return (
-    <div className="py-20 bg-background">
+    <div className="py-20">
       <motion.div
         className="text-center"
         variants={containerVariants}

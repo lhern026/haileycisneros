@@ -7,10 +7,10 @@ const Home = () => {
     <div className="relative w-full h-screen overflow-hidden">
       <ThreeScene />
       <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white bg-black bg-opacity-50 p-4">
-        <h2 className="text-6xl font-bold mb-6 text-white">
+        <h2 className="text-6xl font-bold mb-6 text-primary">
           Welcome to My Art Portfolio
         </h2>
-        <p className="text-xl text-gray-300 mb-8">
+        <p className="text-xl text-accent mb-8">
           Discover my latest artworks and projects.
         </p>
         <Link to="/projects">

@@ -13,7 +13,7 @@ const Projects = () => {
   };
 
   return (
-    <div className="bg-neutral-800 bg-opacity-50 py-20 max-w-full">
+    <div className=" py-20 max-w-full">
       <h2 className="text-5xl font-bold mb-12 text-center text-primary">
         My Projects
       </h2>

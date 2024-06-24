@@ -17,11 +17,12 @@ const ThreeScene = () => {
       0.1,
       1000
     );
-    camera.position.z = 10;
+    camera.position.z = 15; // Adjusted to fit the larger cube in view
 
     // Renderer
     const renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setSize(currentMount.clientWidth, currentMount.clientHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
     currentMount.appendChild(renderer.domElement);
 
     // Load background texture
@@ -29,18 +30,22 @@ const ThreeScene = () => {
     const backgroundTexture = textureLoader.load(
       "https://images.pexels.com/photos/2310713/pexels-photo-2310713.jpeg?auto=compress&cs=tinysrgb&w=800"
     );
-
-    // Set the background texture
     scene.background = backgroundTexture;
 
-    // Geometry and Material with Textures for Each Face
-    const geometry = new THREE.BoxGeometry(5, 5, 5);
+    // Lighting
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+    scene.add(ambientLight);
 
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+    directionalLight.position.set(10, 10, 10);
+    scene.add(directionalLight);
+
+    // Function to create materials with textures
     const createMaterial = (url) => {
       const texture = textureLoader.load(url);
       texture.minFilter = THREE.LinearFilter;
       texture.magFilter = THREE.LinearFilter;
-      return new THREE.MeshBasicMaterial({ map: texture });
+      return new THREE.MeshStandardMaterial({ map: texture });
     };
 
     const materials = [
@@ -51,6 +56,13 @@ const ThreeScene = () => {
       createMaterial("https://i.imgur.com/1lyTROf.jpeg"),
       createMaterial("https://i.imgur.com/WBBjK5l.jpeg"),
     ];
+
+    // Determine cube size based on screen width
+    const isMobile = window.innerWidth <= 768;
+    const cubeSize = isMobile ? 7 : 11; // Smaller size for mobile
+
+    // Geometry with responsive size
+    const geometry = new THREE.BoxGeometry(cubeSize, cubeSize, cubeSize);
 
     const cube = new THREE.Mesh(geometry, materials);
     scene.add(cube);
