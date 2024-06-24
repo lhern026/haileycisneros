@@ -10,7 +10,7 @@ function App() {
   return (
     <Router>
       <div
-        className="min-h-screen bg-cover bg-center bg-fixed font-sans"
+        className="min-h-screen bg-cover bg-center bg-fixed font-sans max-w-full"
         style={{
           backgroundImage:
             'url("https://images.pexels.com/photos/2310713/pexels-photo-2310713.jpeg?auto=compress&cs=tinysrgb&w=800")',

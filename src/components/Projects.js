@@ -1,62 +1,156 @@
-import React from "react";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
-function Projects() {
+const Projects = () => {
+  const [selectedCard, setSelectedCard] = useState(null);
+
+  const handleCardClick = (card) => {
+    setSelectedCard(card);
+  };
+
+  const handleClose = () => {
+    setSelectedCard(null);
+  };
+
   return (
-    <div className="py-20 bg-background">
+    <div className="bg-neutral-800 bg-opacity-50 py-20 max-w-full">
       <h2 className="text-5xl font-bold mb-12 text-center text-primary">
         My Projects
       </h2>
-      <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div className="bg-white rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition duration-500">
-            <div
-              className="bg-cover bg-center h-48"
-              style={{
-                backgroundImage:
-                  'url("https://source.unsplash.com/random/800x600?project")',
-              }}
-            ></div>
-            <div className="p-6">
-              <h3 className="text-2xl font-semibold mb-2 text-primary">
-                Project 1
-              </h3>
-              <p className="text-gray-700 mb-4">
-                Description of project 1. This is where you can add a brief
-                overview of what the project is about, the technologies used,
-                and any other relevant details.
-              </p>
-              <button className="bg-secondary text-white py-2 px-4 rounded hover:bg-primary transition duration-300">
-                View More
-              </button>
-            </div>
-          </div>
-          <div className="bg-white rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition duration-500">
-            <div
-              className="bg-cover bg-center h-48"
-              style={{
-                backgroundImage:
-                  'url("https://source.unsplash.com/random/800x600?design")',
-              }}
-            ></div>
-            <div className="p-6">
-              <h3 className="text-2xl font-semibold mb-2 text-primary">
-                Project 2
-              </h3>
-              <p className="text-gray-700 mb-4">
-                Description of project 2. This is where you can add a brief
-                overview of what the project is about, the technologies used,
-                and any other relevant details.
-              </p>
-              <button className="bg-secondary text-white py-2 px-4 rounded hover:bg-primary transition duration-300">
-                View More
-              </button>
-            </div>
-          </div>
-          {/* Add more projects as needed */}
+      <div className="container mx-auto px-6 max-w-7xl">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {cards.map((card) => (
+            <Card key={card.id} card={card} onClick={handleCardClick} />
+          ))}
         </div>
       </div>
+      <AnimatePresence>
+        {selectedCard && (
+          <motion.div
+            className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <motion.div
+              className="bg-white rounded-lg p-6 relative flex"
+              style={{ width: "90vw", height: "90vh" }}
+              initial={{ scale: 0.8 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0.8 }}
+            >
+              <button
+                onClick={handleClose}
+                className="absolute top-2 right-2 text-black bg-gray-300 rounded-full px-2 py-1"
+              >
+                Close
+              </button>
+              <div className="w-1/2 h-full">
+                <img
+                  src={selectedCard.url}
+                  alt={selectedCard.title}
+                  className="w-full h-full object-cover rounded-l-lg"
+                />
+              </div>
+              <div className="w-1/2 h-full p-6 flex flex-col justify-center">
+                <h2 className="text-3xl font-bold mb-4">
+                  {selectedCard.title}
+                </h2>
+                <p className="text-gray-700 text-lg">
+                  Description of {selectedCard.title}.
+                </p>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
-}
+};
+
+const Card = ({ card, onClick }) => {
+  return (
+    <div
+      key={card.id}
+      className="relative h-[400px] w-full overflow-hidden bg-neutral-200 rounded-lg shadow-lg group"
+    >
+      <div
+        style={{
+          backgroundImage: `url(${card.url})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+        className="absolute inset-0 transition-transform duration-500 transform group-hover:scale-110"
+      ></div>
+      <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+        <p className="text-white text-2xl font-bold">{card.title}</p>
+      </div>
+      <button
+        onClick={() => onClick(card)}
+        className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-primary text-white py-2 px-4 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+      >
+        Expand
+      </button>
+    </div>
+  );
+};
+
+const cards = [
+  {
+    url: "https://i.imgur.com/0ljGFMY.jpeg",
+    title: "Title 1",
+    id: 1,
+  },
+  {
+    url: "https://i.imgur.com/owV4jYU.jpeg",
+    title: "Title 2",
+    id: 2,
+  },
+  {
+    url: "https://i.imgur.com/Ctet7Iw.jpeg",
+    title: "Title 3",
+    id: 3,
+  },
+  {
+    url: "https://i.imgur.com/1lyTROf.jpeg",
+    title: "Title 4",
+    id: 4,
+  },
+  {
+    url: "https://i.imgur.com/WBBjK5l.jpeg",
+    title: "Title 5",
+    id: 5,
+  },
+  {
+    url: "https://i.imgur.com/Gqx4ii9.jpeg",
+    title: "Title 6",
+    id: 6,
+  },
+  {
+    url: "https://i.imgur.com/mQyOHlA.jpeg",
+    title: "Title 7",
+    id: 7,
+  },
+  {
+    url: "https://i.imgur.com/6IpbUwD.jpeg",
+    title: "Title 8",
+    id: 8,
+  },
+  {
+    url: "https://i.imgur.com/4F0G2Pw.jpeg",
+    title: "Title 9",
+    id: 9,
+  },
+  {
+    url: "https://i.imgur.com/z5JbtcG.jpeg",
+    title: "Title 10",
+    id: 10,
+  },
+  {
+    url: "https://i.imgur.com/avk97Nl.jpeg",
+    title: "Title 11",
+    id: 11,
+  },
+];
 
 export default Projects;

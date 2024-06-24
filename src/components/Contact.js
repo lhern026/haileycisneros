@@ -1,40 +1,61 @@
 import React from "react";
+import { motion } from "framer-motion";
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      duration: 1,
+      staggerChildren: 0.3,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 },
+};
 
 function Contact() {
   return (
     <div className="py-20 bg-background">
-      <h2 className="text-4xl font-bold mb-6 text-primary">Contact Me</h2>
-      <form className="max-w-lg mx-auto space-y-4">
-        <div>
-          <label className="block text-text mb-2">Name:</label>
-          <input
-            type="text"
-            name="name"
-            className="w-full p-3 border border-gray-300 rounded"
-          />
-        </div>
-        <div>
-          <label className="block text-text mb-2">Email:</label>
-          <input
-            type="email"
-            name="email"
-            className="w-full p-3 border border-gray-300 rounded"
-          />
-        </div>
-        <div>
-          <label className="block text-text mb-2">Message:</label>
-          <textarea
-            name="message"
-            className="w-full p-3 border border-gray-300 rounded"
-          ></textarea>
-        </div>
-        <button
-          type="submit"
-          className="w-full py-3 bg-primary text-white rounded hover:bg-secondary transition duration-300"
+      <motion.div
+        className="text-center"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        <motion.h2
+          className="text-5xl font-bold mb-12 text-primary"
+          variants={itemVariants}
         >
-          Send
-        </button>
-      </form>
+          Contact Me
+        </motion.h2>
+        <motion.div
+          className="flex justify-center space-x-6"
+          variants={itemVariants}
+        >
+          <motion.a
+            href="https://www.tiktok.com/@bluebutterfly888"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-4xl text-gray-800 hover:text-primary transition duration-300"
+            whileHover={{ scale: 1.2 }}
+          >
+            <i className="fab fa-tiktok"></i> TikTok
+          </motion.a>
+          <motion.a
+            href="https://www.instagram.com/haileyacisnerosart"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-4xl text-gray-800 hover:text-primary transition duration-300"
+            whileHover={{ scale: 1.2 }}
+          >
+            <i className="fab fa-instagram"></i> Instagram
+          </motion.a>
+        </motion.div>
+      </motion.div>
     </div>
   );
 }
