@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Home() {
   return (
@@ -12,7 +13,7 @@ function Home() {
           Discover my latest artworks and projects.
         </p>
         <button className="bg-primary text-white py-2 px-4 rounded-full shadow-lg hover:bg-secondary transition duration-300">
-          View Gallery
+          <Link to={"/projects"}> View Gallery</Link>
         </button>
       </div>
     </div>

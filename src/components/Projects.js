@@ -33,27 +33,27 @@ const Projects = () => {
             exit={{ opacity: 0 }}
           >
             <motion.div
-              className="bg-white rounded-lg p-6 relative flex"
-              style={{ width: "90vw", height: "90vh" }}
+              className="bg-white relative flex flex-col md:flex-row items-center overflow-auto"
+              style={{ width: "100vw", height: "100vh" }}
               initial={{ scale: 0.8 }}
               animate={{ scale: 1 }}
               exit={{ scale: 0.8 }}
             >
               <button
                 onClick={handleClose}
-                className="absolute top-2 right-2 text-black bg-gray-300 rounded-full px-2 py-1"
+                className="absolute top-2 right-2 text-black bg-gray-300 hover:bg-gray-400 rounded-full px-4 py-2"
               >
                 Close
               </button>
-              <div className="w-1/2 h-full">
+              <div className="w-full md:w-1/2 h-[95%] md:h-full">
                 <img
                   src={selectedCard.url}
                   alt={selectedCard.title}
-                  className="w-full h-full object-cover rounded-l-lg"
+                  className="w-full h-full object-cover rounded-t-lg md:rounded-l-lg md:rounded-t-none"
                 />
               </div>
-              <div className="w-1/2 h-full p-6 flex flex-col justify-center">
-                <h2 className="text-3xl font-bold mb-4">
+              <div className="w-full md:w-1/2 h-full p-6 bg-white text-center flex flex-col justify-center overflow-y-auto">
+                <h2 className="text-3xl font-bold mb-2">
                   {selectedCard.title}
                 </h2>
                 <p className="text-gray-700 text-lg">
@@ -87,7 +87,7 @@ const Card = ({ card, onClick }) => {
       </div>
       <button
         onClick={() => onClick(card)}
-        className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-primary text-white py-2 px-4 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+        className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-primary hover:bg-secondary text-white py-2 px-4 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-500"
       >
         Expand
       </button>

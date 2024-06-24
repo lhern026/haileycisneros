@@ -11,7 +11,11 @@ function Header() {
   return (
     <header className="bg-primary text-white py-6 shadow-lg">
       <div className="container mx-auto flex justify-between items-center px-6">
-        <h1 className="text-3xl font-serif">Hailey Cisneros</h1>
+        <h1 className="text-3xl font-serif">
+          <Link to="/" className="hover:text-secondary transition duration-300">
+            Hailey Cisneros
+          </Link>
+        </h1>
         <nav className="hidden md:flex space-x-8">
           <ul className="flex space-x-8">
             <li>
