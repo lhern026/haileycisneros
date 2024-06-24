@@ -43,7 +43,7 @@ function About() {
             About Me
           </motion.h2>
           <motion.p
-            className="text-2xl text-gray-300 max-w-2xl leading-relaxed"
+            className="text-2xl text-black max-w-2xl leading-relaxed"
             variants={itemVariants}
           >
             Hello, my name is{" "}
