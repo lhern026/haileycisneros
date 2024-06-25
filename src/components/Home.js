@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { FontLoader } from "three/examples/jsm/loaders/FontLoader";
 import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry";
@@ -6,29 +6,22 @@ import { Link } from "react-router-dom";
 import ThreeScene from "./ThreeScene"; // Adjust the import path as needed
 
 const Home = () => {
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
   return (
     <div className="relative">
       <ThreeScene />
-      {isMobile ? (
-        <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 text-center text-white">
-          <h2 className="text-5xl font-bold mb-6 text-primary">Welcome</h2>
-          <p className="text-lg text-text">Feel free to check my work out</p>
-        </div>
-      ) : (
-        <FloatingText />
-      )}
-      <div className="absolute bottom-44 left-1/2 transform -translate-x-1/2">
+      <div className="absolute inset-0 flex flex-col justify-center items-center text-white px-6 text-center md:hidden">
+        <h2 className="text-4xl font-bold mb-4 text-primary">Welcome</h2>
+        <p className="text-lg mb-8 text-accent">
+          Feel free to check my work out
+        </p>
+        <Link to="/projects">
+          <button className="bg-primary text-white py-3 px-8 rounded-full shadow-lg hover:bg-secondary transition duration-300 glow-on-click">
+            View Gallery
+          </button>
+        </Link>
+      </div>
+      <FloatingText className="hidden md:block" />
+      <div className="absolute bottom-16 left-1/2 transform -translate-x-1/2 hidden md:block">
         <Link to="/projects">
           <button className="bg-primary text-white py-3 px-8 rounded-full shadow-lg hover:bg-secondary transition duration-300 glow-on-click">
             View Gallery
@@ -39,7 +32,7 @@ const Home = () => {
   );
 };
 
-const FloatingText = () => {
+const FloatingText = ({ className }) => {
   const mountRef = useRef(null);
 
   useEffect(() => {
@@ -163,6 +156,7 @@ const FloatingText = () => {
   return (
     <div
       ref={mountRef}
+      className={className}
       style={{
         position: "absolute",
         top: 0,
