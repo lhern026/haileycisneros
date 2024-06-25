@@ -11,7 +11,7 @@ const Home = () => {
       <ThreeScene />
       <div className="absolute inset-0 flex flex-col justify-center items-center text-white px-6 text-center md:hidden">
         <h2 className="text-4xl font-bold mb-4 text-primary">Welcome</h2>
-        <p className="text-lg mb-8 text-accent">
+        <p className="text-xl mb-8 text-accent">
           Feel free to check my work out
         </p>
         <Link to="/projects">

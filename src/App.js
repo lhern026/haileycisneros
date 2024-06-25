@@ -13,7 +13,8 @@ function App() {
       <div
         className="flex flex-col min-h-screen bg-cover bg-center"
         style={{
-          backgroundImage: 'url("https://i.imgur.com/0rra6Ly.jpeg")',
+          backgroundImage:
+            'url("https://images.pexels.com/photos/2310713/pexels-photo-2310713.jpeg?auto=compress&cs=tinysrgb&w=800")',
         }}
       >
         <Header />

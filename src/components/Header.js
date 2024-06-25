@@ -30,9 +30,9 @@ function Header() {
   };
 
   return (
-    <header className="bg-primary text-white py-6 shadow-lg">
-      <div className="container mx-auto flex justify-between items-center px-6">
-        <h1 className="text-3xl font-serif">
+    <header className="absolute w-full top-0 z-50 text-white">
+      <div className="container mx-auto flex justify-between items-center px-6 py-6">
+        <h1 className="text-4xl font-serif">
           <Link to="/" className="hover:text-secondary transition duration-300">
             Hailey Cisneros
           </Link>
@@ -42,7 +42,7 @@ function Header() {
             <li>
               <Link
                 to="/"
-                className="hover:text-secondary transition duration-300"
+                className="hover:text-secondary transition duration-300 text-xl"
               >
                 Home
               </Link>
@@ -50,7 +50,7 @@ function Header() {
             <li>
               <Link
                 to="/about"
-                className="hover:text-secondary transition duration-300"
+                className="hover:text-secondary transition duration-300 text-xl"
               >
                 About
               </Link>
@@ -58,7 +58,7 @@ function Header() {
             <li>
               <Link
                 to="/projects"
-                className="hover:text-secondary transition duration-300"
+                className="hover:text-secondary transition duration-300 text-xl"
               >
                 Projects
               </Link>
@@ -66,7 +66,7 @@ function Header() {
             <li>
               <Link
                 to="/contact"
-                className="hover:text-secondary transition duration-300"
+                className="hover:text-secondary transition duration-300 text-xl"
               >
                 Contact
               </Link>
@@ -95,7 +95,7 @@ function Header() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="md:hidden bg-primary overflow-hidden"
+            className="md:hidden bg-glass bg-opacity-90 backdrop-blur-md overflow-hidden"
             initial="hidden"
             animate="visible"
             exit="exit"
@@ -105,7 +105,7 @@ function Header() {
               <li>
                 <Link
                   to="/"
-                  className="hover:text-secondary transition duration-300 text-2xl"
+                  className="hover:text-secondary transition duration-300 text-3xl"
                   onClick={toggleMenu}
                 >
                   Home
@@ -114,7 +114,7 @@ function Header() {
               <li>
                 <Link
                   to="/about"
-                  className="hover:text-secondary transition duration-300 text-2xl"
+                  className="hover:text-secondary transition duration-300 text-3xl"
                   onClick={toggleMenu}
                 >
                   About
@@ -123,7 +123,7 @@ function Header() {
               <li>
                 <Link
                   to="/projects"
-                  className="hover:text-secondary transition duration-300 text-2xl"
+                  className="hover:text-secondary transition duration-300 text-3xl"
                   onClick={toggleMenu}
                 >
                   Projects
@@ -132,7 +132,7 @@ function Header() {
               <li>
                 <Link
                   to="/contact"
-                  className="hover:text-secondary transition duration-300 text-2xl"
+                  className="hover:text-secondary transition duration-300 text-3xl"
                   onClick={toggleMenu}
                 >
                   Contact
