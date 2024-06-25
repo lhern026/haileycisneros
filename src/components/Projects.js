@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { AiOutlineClose, AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
+import { useSwipeable } from "react-swipeable";
 
 const Projects = () => {
   const [selectedCard, setSelectedCard] = useState(null);
@@ -12,8 +14,35 @@ const Projects = () => {
     setSelectedCard(null);
   };
 
+  const handleNext = () => {
+    if (selectedCard) {
+      const currentIndex = cards.findIndex(
+        (card) => card.id === selectedCard.id
+      );
+      const nextIndex = (currentIndex + 1) % cards.length;
+      setSelectedCard(cards[nextIndex]);
+    }
+  };
+
+  const handlePrev = () => {
+    if (selectedCard) {
+      const currentIndex = cards.findIndex(
+        (card) => card.id === selectedCard.id
+      );
+      const prevIndex = (currentIndex - 1 + cards.length) % cards.length;
+      setSelectedCard(cards[prevIndex]);
+    }
+  };
+
+  const swipeHandlers = useSwipeable({
+    onSwipedLeft: handleNext,
+    onSwipedRight: handlePrev,
+    preventDefaultTouchmoveEvent: true,
+    trackMouse: true,
+  });
+
   return (
-    <div className=" py-20 max-w-full">
+    <div className="py-20 max-w-full">
       <h2 className="text-5xl font-bold mb-12 text-center text-primary">
         My Projects
       </h2>
@@ -31,6 +60,7 @@ const Projects = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            {...swipeHandlers}
           >
             <motion.div
               className="bg-white relative flex flex-col md:flex-row items-center overflow-auto"
@@ -41,9 +71,18 @@ const Projects = () => {
             >
               <button
                 onClick={handleClose}
-                className="absolute top-2 right-2 text-black bg-gray-300 hover:bg-gray-400 rounded-full px-4 py-2"
+                className="absolute top-10 right-2 text-black bg-gray-300 hover:bg-gray-400 rounded-full p-2 md:px-4 md:py-2 md:top-2"
               >
-                Close
+                <span className="block md:hidden">
+                  <AiOutlineClose size={24} />
+                </span>
+                <span className="hidden md:block">Close</span>
+              </button>
+              <button
+                onClick={handlePrev}
+                className="absolute left-2 top-1/2 transform -translate-y-1/2 text-white bg-gray-800 bg-opacity-50 hover:bg-opacity-75 rounded-full p-2"
+              >
+                <AiOutlineLeft size={24} />
               </button>
               <div className="w-full md:w-1/2 h-[95%] md:h-full">
                 <img
@@ -60,6 +99,12 @@ const Projects = () => {
                   Description of {selectedCard.title}.
                 </p>
               </div>
+              <button
+                onClick={handleNext}
+                className="absolute right-2 top-1/2 transform -translate-y-1/2 text-white bg-gray-800 bg-opacity-50 hover:bg-opacity-75 rounded-full p-2"
+              >
+                <AiOutlineRight size={24} />
+              </button>
             </motion.div>
           </motion.div>
         )}
