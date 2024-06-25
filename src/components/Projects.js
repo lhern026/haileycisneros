@@ -1,7 +1,29 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { AiOutlineClose, AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 import { useSwipeable } from "react-swipeable";
+import { useTransition, animated } from "@react-spring/web";
+
+const menuVariants = {
+  hidden: { opacity: 0, height: 0 },
+  visible: {
+    opacity: 1,
+    height: "auto",
+    transition: {
+      duration: 0.5,
+      ease: "easeInOut",
+    },
+  },
+  exit: {
+    opacity: 0,
+    height: 0,
+    transition: {
+      duration: 0.5,
+      ease: "easeInOut",
+    },
+  },
+};
 
 const Projects = () => {
   const [selectedCard, setSelectedCard] = useState(null);
@@ -41,6 +63,13 @@ const Projects = () => {
     trackMouse: true,
   });
 
+  const transitions = useTransition(selectedCard, {
+    from: { opacity: 0, transform: "translate3d(100%,0,0)" },
+    enter: { opacity: 1, transform: "translate3d(0%,0,0)" },
+    leave: { opacity: 0, transform: "translate3d(-50%,0,0)" },
+    config: { duration: 300 },
+  });
+
   return (
     <div className="py-20 max-w-full">
       <h2 className="text-5xl font-bold mb-12 text-center text-primary">
@@ -63,7 +92,7 @@ const Projects = () => {
             {...swipeHandlers}
           >
             <motion.div
-              className="bg-white relative flex flex-col md:flex-row items-center overflow-auto"
+              className="bg-white relative flex flex-col md:flex-row items-center overflow-hidden"
               style={{ width: "100vw", height: "100vh" }}
               initial={{ scale: 0.8 }}
               animate={{ scale: 1 }}
@@ -71,25 +100,25 @@ const Projects = () => {
             >
               <button
                 onClick={handleClose}
-                className="absolute top-10 right-2 text-black bg-gray-300 hover:bg-gray-400 rounded-full p-2 md:px-4 md:py-2 md:top-2"
+                className="absolute top-6 right-2 md:right-2 text-black bg-gray-300 hover:bg-gray-400 rounded-full p-2 md:px-4 md:py-2 md:top-2 z-50"
+                style={{ zIndex: 1000 }}
               >
                 <span className="block md:hidden">
                   <AiOutlineClose size={24} />
                 </span>
                 <span className="hidden md:block">Close</span>
               </button>
-              <button
-                onClick={handlePrev}
-                className="absolute left-2 top-1/2 transform -translate-y-1/2 text-white bg-gray-800 bg-opacity-50 hover:bg-opacity-75 rounded-full p-2"
-              >
-                <AiOutlineLeft size={24} />
-              </button>
-              <div className="w-full md:w-1/2 h-[95%] md:h-full">
-                <img
-                  src={selectedCard.url}
-                  alt={selectedCard.title}
-                  className="w-full h-full object-cover rounded-t-lg md:rounded-l-lg md:rounded-t-none"
-                />
+              <div className="w-full md:w-1/2 h-[95%] md:h-full relative">
+                {transitions((style, item) =>
+                  item ? (
+                    <animated.img
+                      src={item.url}
+                      alt={item.title}
+                      style={style}
+                      className="w-full h-full object-cover rounded-t-lg md:rounded-l-lg md:rounded-t-none"
+                    />
+                  ) : null
+                )}
               </div>
               <div className="w-full md:w-1/2 h-full p-6 bg-white text-center flex flex-col justify-center overflow-y-auto">
                 <h2 className="text-3xl font-bold mb-2">
@@ -99,12 +128,22 @@ const Projects = () => {
                   Description of {selectedCard.title}.
                 </p>
               </div>
-              <button
-                onClick={handleNext}
-                className="absolute right-2 top-1/2 transform -translate-y-1/2 text-white bg-gray-800 bg-opacity-50 hover:bg-opacity-75 rounded-full p-2"
-              >
-                <AiOutlineRight size={24} />
-              </button>
+              <div className="absolute inset-y-0 left-0 flex items-center z-50">
+                <button
+                  onClick={handlePrev}
+                  className="text-white bg-gray-800 bg-opacity-50 hover:bg-opacity-75 rounded-full p-2"
+                >
+                  <AiOutlineLeft size={24} />
+                </button>
+              </div>
+              <div className="absolute inset-y-0 right-0 flex items-center z-50">
+                <button
+                  onClick={handleNext}
+                  className="text-white bg-gray-800 bg-opacity-50 hover:bg-opacity-75 rounded-full p-2"
+                >
+                  <AiOutlineRight size={24} />
+                </button>
+              </div>
             </motion.div>
           </motion.div>
         )}
