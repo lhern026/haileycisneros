@@ -70,8 +70,8 @@ const ThreeScene = () => {
     // Animation
     const animate = () => {
       requestAnimationFrame(animate);
-      cube.rotation.x += 0.001; // Slow down the rotation speed
-      cube.rotation.y += 0.001; // Slow down the rotation speed
+      cube.rotation.x += 0.005; // Slightly faster rotation speed
+      cube.rotation.y += 0.005; // Slightly faster rotation speed
       renderer.render(scene, camera);
     };
     animate();
