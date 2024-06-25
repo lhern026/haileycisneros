@@ -4,14 +4,16 @@ import { FontLoader } from "three/examples/jsm/loaders/FontLoader";
 import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry";
 import { Link } from "react-router-dom";
 import ThreeScene from "./ThreeScene"; // Adjust the import path as needed
+import Header from "./Header";
 
 const Home = () => {
   return (
-    <div className="relative">
+    <div className="relative h-screen">
+      <Header />
       <ThreeScene />
       <div className="absolute inset-0 flex flex-col justify-center items-center text-white px-6 text-center md:hidden">
         <h2 className="text-4xl font-bold mb-4 text-primary">Welcome</h2>
-        <p className="text-xl mb-8 text-accent">
+        <p className="text-2xl mb-8 text-accent">
           Feel free to check my work out
         </p>
         <Link to="/projects">
