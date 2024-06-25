@@ -19,7 +19,13 @@ const itemVariants = {
 
 function Contact() {
   return (
-    <div className="py-20">
+    <div
+      className="py-20 bg-cover w-55"
+      style={{
+        backgroundImage:
+          'url("https://i.imgur.com/bwSWV76_d.jpg?maxwidth=520&shape=thumb&fidelity=high")',
+      }}
+    >
       <motion.div
         className="text-center"
         variants={containerVariants}

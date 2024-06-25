@@ -1,5 +1,26 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
+
+const menuVariants = {
+  hidden: { opacity: 0, height: 0 },
+  visible: {
+    opacity: 1,
+    height: "auto",
+    transition: {
+      duration: 0.5,
+      ease: "easeInOut",
+    },
+  },
+  exit: {
+    opacity: 0,
+    height: 0,
+    transition: {
+      duration: 0.5,
+      ease: "easeInOut",
+    },
+  },
+};
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -71,48 +92,56 @@ function Header() {
           </button>
         </div>
       </div>
-      {isOpen && (
-        <div className="md:hidden bg-primary py-4">
-          <ul className="flex flex-col items-center space-y-6">
-            <li>
-              <Link
-                to="/"
-                className="hover:text-secondary transition duration-300 text-2xl"
-                onClick={toggleMenu}
-              >
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/about"
-                className="hover:text-secondary transition duration-300 text-2xl"
-                onClick={toggleMenu}
-              >
-                About
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/projects"
-                className="hover:text-secondary transition duration-300 text-2xl"
-                onClick={toggleMenu}
-              >
-                Projects
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/contact"
-                className="hover:text-secondary transition duration-300 text-2xl"
-                onClick={toggleMenu}
-              >
-                Contact
-              </Link>
-            </li>
-          </ul>
-        </div>
-      )}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            className="md:hidden bg-primary overflow-hidden"
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            variants={menuVariants}
+          >
+            <ul className="flex flex-col items-center space-y-6 py-4">
+              <li>
+                <Link
+                  to="/"
+                  className="hover:text-secondary transition duration-300 text-2xl"
+                  onClick={toggleMenu}
+                >
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/about"
+                  className="hover:text-secondary transition duration-300 text-2xl"
+                  onClick={toggleMenu}
+                >
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/projects"
+                  className="hover:text-secondary transition duration-300 text-2xl"
+                  onClick={toggleMenu}
+                >
+                  Projects
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/contact"
+                  className="hover:text-secondary transition duration-300 text-2xl"
+                  onClick={toggleMenu}
+                >
+                  Contact
+                </Link>
+              </li>
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

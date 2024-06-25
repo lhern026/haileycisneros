@@ -4,28 +4,30 @@ import { Link } from "react-router-dom";
 
 const containerVariants = {
   hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { duration: 1 } },
+  visible: {
+    opacity: 1,
+    transition: {
+      duration: 0.5, // Faster transition duration
+      when: "beforeChildren",
+      staggerChildren: 0.1, // Faster staggering of child elements
+    },
+  },
 };
 
 const itemVariants = {
   hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 1 } },
-};
-
-const textVariants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { duration: 1.5 } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.3 } }, // Faster item transition
 };
 
 const spanVariants = {
   hidden: { scale: 0 },
   visible: {
     scale: 1,
-    transition: { duration: 0.5, type: "spring", stiffness: 100 },
+    transition: { duration: 0.3, type: "spring", stiffness: 100 }, // Faster span transition
   },
 };
 
-function About() {
+const About = () => {
   return (
     <motion.div
       className="relative py-20 bg-cover bg-center"
@@ -36,7 +38,13 @@ function About() {
       initial="hidden"
       animate="visible"
     >
-      <div className="relative z-10 container mx-auto px-6 py-12 text-center">
+      <div
+        className="relative z-10 container mx-auto px-6 py-12 text-center bg-cover bg-opacity-75 rounded-md shadow-lg"
+        style={{
+          backgroundImage:
+            'url("https://i.imgur.com/bwSWV76_d.jpg?maxwidth=520&shape=thumb&fidelity=high")',
+        }}
+      >
         <motion.div
           className="flex flex-col items-center"
           variants={containerVariants}
@@ -50,13 +58,15 @@ function About() {
           />
           <motion.h2
             className="text-5xl font-bold mb-6 text-primary"
-            variants={textVariants}
+            variants={itemVariants}
+            whileHover={{ scale: 1.05 }}
           >
             About Me
           </motion.h2>
           <motion.p
-            className="text-2xl text-background bg-primary bg-opacity-75 p-4 max-w-2xl leading-relaxed mb-8 rounded-md"
+            className="text-2xl text-background bg-primary bg-opacity-75 p-4 max-w-2xl leading-relaxed mb-8 rounded-md shadow-md"
             variants={itemVariants}
+            whileHover={{ scale: 1.02 }}
           >
             Hello, my name is{" "}
             <motion.span
@@ -77,7 +87,7 @@ function About() {
             <motion.div
               className="bg-primary text-white py-3 px-8 rounded-full shadow-lg hover:bg-secondary transition duration-300 inline-block"
               variants={itemVariants}
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.1 }}
             >
               View My Work
             </motion.div>
@@ -86,6 +96,6 @@ function About() {
       </div>
     </motion.div>
   );
-}
+};
 
 export default About;
