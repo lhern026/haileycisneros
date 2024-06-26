@@ -9,10 +9,11 @@ import { WavyBackground } from "./WavyBackground"; // Adjust the import path as 
 
 const Home = () => {
   return (
-    <WavyBackground containerClassName="relative h-screen">
+    <div className="relative h-screen">
+      <WavyBackground containerClassName="absolute inset-0 z-0" />
       <Header />
       <ThreeScene />
-      <div className="absolute inset-0 flex flex-col justify-center items-center text-white px-6 text-center md:hidden">
+      <div className="absolute inset-0 flex flex-col justify-center items-center text-white px-6 text-center md:hidden z-10">
         <h2 className="text-4xl font-bold mb-4 text-primary">Welcome</h2>
         <p className="text-2xl mb-8 text-accent">
           Feel free to check my work out
@@ -23,15 +24,15 @@ const Home = () => {
           </button>
         </Link>
       </div>
-      <FloatingText className="hidden md:block" />
-      <div className="absolute bottom-16 left-1/2 transform -translate-x-1/2 hidden md:block">
+      <FloatingText className="hidden md:block z-10" />
+      <div className="absolute bottom-16 left-1/2 transform -translate-x-1/2 hidden md:block z-10">
         <Link to="/projects">
           <button className="bg-primary text-white py-3 px-8 rounded-full shadow-lg hover:bg-secondary transition duration-300 glow-on-click">
             View Gallery
           </button>
         </Link>
       </div>
-    </WavyBackground>
+    </div>
   );
 };
 
