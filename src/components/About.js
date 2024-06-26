@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { WavyBackground } from "./WavyBackground"; // Adjust the import path as needed
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -29,22 +30,20 @@ const spanVariants = {
 
 const About = () => {
   return (
-    <motion.div
-      className="relative py-20 bg-cover bg-center"
-      style={{
-        backgroundImage:
-          'url("https://images.pexels.com/photos/2310713/pexels-photo-2310713.jpeg?auto=compress&cs=tinysrgb&w=800")',
-      }}
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
+    <WavyBackground
+      className="relative z-10"
+      containerClassName="min-h-screen flex flex-col justify-center"
+      waveWidth={50}
+      backgroundFill="#FF6B6B" // Use the primary color as the background
+      blur={10}
+      speed="fast"
+      waveOpacity={0.5}
     >
-      <div
-        className="relative z-10 container mx-auto px-6 py-12 text-center bg-cover bg-opacity-75 rounded-md shadow-lg"
-        style={{
-          backgroundImage:
-            'url("https://i.imgur.com/bwSWV76_d.jpg?maxwidth=520&shape=thumb&fidelity=high")',
-        }}
+      <motion.div
+        className="relative z-10 container mx-auto px-6 py-12 text-center"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
       >
         <motion.div
           className="flex flex-col items-center"
@@ -94,8 +93,8 @@ const About = () => {
             </motion.div>
           </Link>
         </motion.div>
-      </div>
-    </motion.div>
+      </motion.div>
+    </WavyBackground>
   );
 };
 

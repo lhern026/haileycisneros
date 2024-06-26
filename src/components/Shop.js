@@ -1,48 +1,42 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 const Shop = () => {
   const [products, setProducts] = useState([]);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         const response = await axios.get("/api/printify/products");
-        setProducts(response.data);
+        setProducts(response.data.data);
       } catch (error) {
-        console.error("Error fetching products", error);
+        console.error("Error fetching products:", error);
+        setError("Error loading products");
       }
     };
-
     fetchProducts();
   }, []);
 
   return (
-    <div className="py-20 max-w-full">
-      <h2 className="text-5xl font-bold mb-12 text-center text-primary">
-        Shop
-      </h2>
-      <div className="container mx-auto px-6 max-w-7xl">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-          {products.map((product) => (
-            <div
-              key={product.id}
-              className="relative h-[400px] w-full overflow-hidden bg-neutral-200 rounded-lg shadow-lg group"
-            >
-              <img
-                src={product.images[0].src}
-                alt={product.title}
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 transform group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                <p className="text-white text-2xl font-bold">{product.title}</p>
-              </div>
-              <button className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-primary hover:bg-secondary text-white py-2 px-4 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                Buy Now
-              </button>
-            </div>
-          ))}
-        </div>
+    <div className="container mx-auto px-6 py-12">
+      <h2 className="text-3xl font-bold mb-6 text-center">Shop</h2>
+      {error && <p className="text-red-500 text-center">{error}</p>}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        {products.map((product) => (
+          <div key={product.id} className="bg-white p-4 rounded-lg shadow-md">
+            <img
+              src={product.images[0].src}
+              alt={product.title}
+              className="w-full h-64 object-cover mb-4 rounded"
+            />
+            <h3 className="text-lg font-semibold">{product.title}</h3>
+            <p className="mt-2 text-gray-600">{product.description}</p>
+            <button className="bg-primary text-white py-2 px-4 rounded mt-4">
+              Buy Now
+            </button>
+          </div>
+        ))}
       </div>
     </div>
   );

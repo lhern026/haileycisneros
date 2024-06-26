@@ -5,6 +5,7 @@ import Home from "./components/Home";
 import About from "./components/About";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
+import Shop from "./components/Shop"; // Import the Shop component
 import Footer from "./components/Footer";
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/shop" element={<Shop />} /> {/* Add the Shop route */}
           </Routes>
         </main>
         <Footer />

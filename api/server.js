@@ -1,10 +1,11 @@
+// Load environment variables
+require("dotenv").config();
+
+// Import necessary modules
 const express = require("express");
 const axios = require("axios");
-const dotenv = require("dotenv");
 
-// Load environment variables from .env file
-dotenv.config();
-
+// Initialize the Express app
 const app = express();
 const PORT = process.env.PORT || 5001;
 
@@ -23,7 +24,18 @@ app.get("/api/printify/products", async (req, res) => {
     );
     res.json(response.data);
   } catch (error) {
-    res.status(500).send("Error fetching products from Printify");
+    if (error.response) {
+      console.error("Data:", error.response.data);
+      console.error("Status:", error.response.status);
+      console.error("Headers:", error.response.headers);
+      res.status(500).send(error.response.data);
+    } else if (error.request) {
+      console.error("Request:", error.request);
+      res.status(500).send("No response received from Printify");
+    } else {
+      console.error("Error", error.message);
+      res.status(500).send("Error setting up the request");
+    }
   }
 });
 

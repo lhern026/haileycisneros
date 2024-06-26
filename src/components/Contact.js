@@ -1,5 +1,8 @@
+// src/components/Contact.js
+
 import React from "react";
 import { motion } from "framer-motion";
+import { WavyBackground } from "./WavyBackground";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -23,54 +26,54 @@ const hoverVariants = {
 
 function Contact() {
   return (
-    <div
-      className="py-20 bg-cover bg-center"
-      style={{
-        backgroundImage:
-          'url("https://images.pexels.com/photos/2310713/pexels-photo-2310713.jpeg?auto=compress&cs=tinysrgb&w=800")',
-      }}
+    <WavyBackground
+      className="relative z-10"
+      containerClassName="h-screen bg-opacity-50"
+      waveWidth={50}
+      backgroundFill="#FF6B6B" // Use the primary color as the background
+      blur={10}
+      speed="fast"
+      waveOpacity={0.5}
     >
-      <div className=" bg-opacity-50 py-20 px-6 rounded-lg mx-4 md:mx-20">
-        <motion.div
-          className="text-center"
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
+      <motion.div
+        className="text-center"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        <motion.h2
+          className="text-5xl font-bold mb-8 text-white"
+          variants={itemVariants}
         >
-          <motion.h2
-            className="text-5xl font-bold mb-8 text-white"
-            variants={itemVariants}
+          Contact Me
+        </motion.h2>
+        <motion.div
+          className="flex flex-col md:flex-row justify-center space-y-6 md:space-y-0 md:space-x-6"
+          variants={itemVariants}
+        >
+          <motion.a
+            href="https://www.tiktok.com/@bluebutterfly888"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-2xl md:text-4xl text-white hover:text-primary transition duration-300 flex items-center"
+            variants={hoverVariants}
+            whileHover="hover"
           >
-            Contact Me
-          </motion.h2>
-          <motion.div
-            className="flex flex-col md:flex-row justify-center space-y-6 md:space-y-0 md:space-x-6"
-            variants={itemVariants}
+            <i className="fab fa-tiktok mr-2"></i> TikTok
+          </motion.a>
+          <motion.a
+            href="https://www.instagram.com/haileyacisnerosart"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-2xl md:text-4xl text-white hover:text-primary transition duration-300 flex items-center"
+            variants={hoverVariants}
+            whileHover="hover"
           >
-            <motion.a
-              href="https://www.tiktok.com/@bluebutterfly888"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-2xl md:text-4xl text-white hover:text-primary transition duration-300 flex items-center"
-              variants={hoverVariants}
-              whileHover="hover"
-            >
-              <i className="fab fa-tiktok mr-2"></i> TikTok
-            </motion.a>
-            <motion.a
-              href="https://www.instagram.com/haileyacisnerosart"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-2xl md:text-4xl text-white hover:text-primary transition duration-300 flex items-center"
-              variants={hoverVariants}
-              whileHover="hover"
-            >
-              <i className="fab fa-instagram mr-2"></i> Instagram
-            </motion.a>
-          </motion.div>
+            <i className="fab fa-instagram mr-2"></i> Instagram
+          </motion.a>
         </motion.div>
-      </div>
-    </div>
+      </motion.div>
+    </WavyBackground>
   );
 }
 

@@ -5,10 +5,11 @@ import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry";
 import { Link } from "react-router-dom";
 import ThreeScene from "./ThreeScene"; // Adjust the import path as needed
 import Header from "./Header";
+import { WavyBackground } from "./WavyBackground"; // Adjust the import path as needed
 
 const Home = () => {
   return (
-    <div className="relative h-screen">
+    <WavyBackground containerClassName="relative h-screen">
       <Header />
       <ThreeScene />
       <div className="absolute inset-0 flex flex-col justify-center items-center text-white px-6 text-center md:hidden">
@@ -30,7 +31,7 @@ const Home = () => {
           </button>
         </Link>
       </div>
-    </div>
+    </WavyBackground>
   );
 };
 
