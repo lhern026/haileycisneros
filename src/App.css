@@ -43,3 +43,51 @@ main {
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+header {
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.5
+  ); /* Transparent background for the header */
+  padding: 1rem 0;
+}
+
+nav ul {
+  display: flex;
+  gap: 1rem;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: #ff6b6b; /* Accent color */
+}
+
+.bg-glass {
+  background: rgba(255, 255, 255, 0.2); /* Glass effect */
+  border-radius: 0.5rem;
+}
+
+ul li {
+  list-style: none;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.wavy-background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}

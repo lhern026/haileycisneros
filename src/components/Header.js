@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import { WavyBackground } from "./WavyBackground"; // Adjust the import path as needed
 
 const menuVariants = {
   hidden: { opacity: 0, height: 0 },
@@ -103,59 +104,65 @@ function Header() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="md:hidden  bg-glass bg-opacity-90 backdrop-blur-md overflow-hidden"
+            className="md:hidden bg-opacity-90 backdrop-blur-md overflow-hidden"
             initial="hidden"
             animate="visible"
             exit="exit"
             variants={menuVariants}
           >
-            <ul className="flex flex-col items-center space-y-6 py-4">
-              <li>
-                <Link
-                  to="/"
-                  className="hover:text-secondary transition duration-300 text-2xl"
-                  onClick={toggleMenu}
-                >
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/about"
-                  className="hover:text-secondary transition duration-300 text-2xl"
-                  onClick={toggleMenu}
-                >
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/projects"
-                  className="hover:text-secondary transition duration-300 text-2xl"
-                  onClick={toggleMenu}
-                >
-                  Projects
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/shop"
-                  className="hover:text-secondary transition duration-300 text-2xl"
-                  onClick={toggleMenu}
-                >
-                  Shop
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/contact"
-                  className="hover:text-secondary transition duration-300 text-2xl"
-                  onClick={toggleMenu}
-                >
-                  Contact
-                </Link>
-              </li>
-            </ul>
+            <WavyBackground
+              colors={["#4DD0E1", "#FFA600"]}
+              waveWidth={30}
+              blur={15}
+            >
+              <ul className="flex flex-col items-center space-y-6 py-4">
+                <li>
+                  <Link
+                    to="/"
+                    className="hover:text-secondary transition duration-300 text-2xl"
+                    onClick={toggleMenu}
+                  >
+                    Home
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/about"
+                    className="hover:text-secondary transition duration-300 text-2xl"
+                    onClick={toggleMenu}
+                  >
+                    About
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/projects"
+                    className="hover:text-secondary transition duration-300 text-2xl"
+                    onClick={toggleMenu}
+                  >
+                    Projects
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/shop"
+                    className="hover:text-secondary transition duration-300 text-2xl"
+                    onClick={toggleMenu}
+                  >
+                    Shop
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/contact"
+                    className="hover:text-secondary transition duration-300 text-2xl"
+                    onClick={toggleMenu}
+                  >
+                    Contact
+                  </Link>
+                </li>
+              </ul>
+            </WavyBackground>
           </motion.div>
         )}
       </AnimatePresence>
