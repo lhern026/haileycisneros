@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function Footer() {
   return (
-    <footer className="bg-primary text-white py-8 shadow-lg w-full">
+    <footer className=" text-white py-8 shadow-lg w-full">
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-center px-6">
         <div className="text-center md:text-left mb-4 md:mb-0">
           <h1 className="text-3xl font-serif">
@@ -19,9 +19,6 @@ function Footer() {
           </p>
         </div>
         <nav className="hidden md:flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6 mt-4 md:mt-0">
-          <Link to="/" className="hover:text-secondary transition duration-300">
-            Home
-          </Link>
           <Link
             to="/about"
             className="hover:text-secondary transition duration-300"
@@ -33,12 +30,6 @@ function Footer() {
             className="hover:text-secondary transition duration-300"
           >
             Projects
-          </Link>
-          <Link
-            to="/contact"
-            className="hover:text-secondary transition duration-300"
-          >
-            Contact
           </Link>
         </nav>
         <div className="flex space-x-6 mt-4 md:mt-0">
