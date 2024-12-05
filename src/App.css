@@ -91,3 +91,16 @@ ul li {
   left: 0;
   z-index: -1;
 }
+
+.hover-underline-animation::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 2px;
+  background: #f43f5e; /* rose-400 */
+  transition: width 0.3s;
+}
+
+.hover-underline-animation:hover::after {
+  width: 100%;
+}

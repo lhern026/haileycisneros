@@ -39,11 +39,11 @@ function Header() {
           </Link>
         </h1>
         <nav className="hidden md:flex space-x-8">
-          <ul className="flex space-x-8">
+          <ul className="flex space-x-8 font-medium text-gray-700">
             <li>
               <Link
                 to="/"
-                className="hover:text-secondary transition duration-300"
+                className="hover:text-rose-400 transition duration-300 ease-in-out"
               >
                 Home
               </Link>
@@ -51,7 +51,7 @@ function Header() {
             <li>
               <Link
                 to="/about"
-                className="hover:text-secondary transition duration-300"
+                className="hover:text-rose-400 transition duration-300 ease-in-out"
               >
                 About
               </Link>
@@ -59,7 +59,7 @@ function Header() {
             <li>
               <Link
                 to="/projects"
-                className="hover:text-secondary transition duration-300"
+                className="hover:text-rose-400 transition duration-300 ease-in-out"
               >
                 Projects
               </Link>
@@ -67,7 +67,7 @@ function Header() {
             <li>
               <Link
                 to="/shop"
-                className="hover:text-secondary transition duration-300"
+                className="hover:text-rose-400 transition duration-300 ease-in-out .hover-underline-animation::after"
               >
                 Shop
               </Link>
@@ -75,13 +75,14 @@ function Header() {
             <li>
               <Link
                 to="/contact"
-                className="hover:text-secondary transition duration-300"
+                className="hover:text-rose-400 transition duration-300 ease-in-out"
               >
                 Contact
               </Link>
             </li>
           </ul>
         </nav>
+
         <div className="md:hidden">
           <button onClick={toggleMenu} className="focus:outline-none">
             <svg
