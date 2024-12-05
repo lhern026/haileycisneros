@@ -154,6 +154,14 @@ function Header() {
                 </li>
                 <li>
                   <Link
+                    to="/gallery"
+                    className="hover:text-secondary transition duration-300 text-2xl"
+                  >
+                    Gallery
+                  </Link>
+                </li>
+                <li>
+                  <Link
                     to="/shop"
                     className="hover:text-secondary transition duration-300 text-2xl"
                     onClick={toggleMenu}
