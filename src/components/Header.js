@@ -58,6 +58,14 @@ function Header() {
             </li>
             <li>
               <Link
+                to="/gallery"
+                className="hover:text-rose-400 transition duration-300 ease-in-out"
+              >
+                Gallery
+              </Link>
+            </li>
+            <li>
+              <Link
                 to="/projects"
                 className="hover:text-rose-400 transition duration-300 ease-in-out"
               >

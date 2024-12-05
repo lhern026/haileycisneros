@@ -25,7 +25,7 @@ const menuVariants = {
   },
 };
 
-const Projects = () => {
+const Gallery = () => {
   const [selectedCard, setSelectedCard] = useState(null);
 
   const handleCardClick = (card) => {
@@ -73,9 +73,15 @@ const Projects = () => {
   return (
     <div className="py-20 max-w-full">
       <h2 className="text-5xl font-bold mb-12 text-center text-primary">
-        My Projects
+        Gallery
       </h2>
-
+      <div className="container mx-auto px-6 max-w-7xl">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {cards.map((card) => (
+            <Card key={card.id} card={card} onClick={handleCardClick} />
+          ))}
+        </div>
+      </div>
       <AnimatePresence>
         {selectedCard && (
           <motion.div
@@ -142,17 +148,7 @@ const Projects = () => {
           </motion.div>
         )}
       </AnimatePresence>
-      <h2 className="text-5xl font-bold mb-12 text-center text-primary mt-20">
-        100 Drawings Project
-      </h2>
 
-      <div className="container mx-auto px-6 max-w-7xl">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {ccards.map((card) => (
-            <Card key={card.id} card={card} onClick={handleCardClick} />
-          ))}
-        </div>
-      </div>
       <AnimatePresence>
         {selectedCard && (
           <motion.div
@@ -469,4 +465,4 @@ const cards = [
   },
 ];
 
-export default Projects;
+export default Gallery;
