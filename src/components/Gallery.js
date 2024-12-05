@@ -245,154 +245,8 @@ const Card = ({ card, onClick }) => {
     </div>
   );
 };
-const ccards = [
-  {
-    url: "https://i.imgur.com/jPMAW6B.jpeg",
-    title: "Title 1",
-    id: 1,
-  },
-  {
-    url: "https://i.imgur.com/EwIkQBI.jpeg",
-    title: "Title 2",
-    id: 2,
-  },
-  {
-    url: "https://i.imgur.com/wDTkSR3.jpeg",
-    title: "Title 3",
-    id: 3,
-  },
-  {
-    url: "https://i.imgur.com/IMBBpQG.jpeg",
-    title: "Title 4",
-    id: 4,
-  },
-  {
-    url: "https://i.imgur.com/FGdCT23.jpeg",
-    title: "Title 5",
-    id: 5,
-  },
-  {
-    url: "https://i.imgur.com/T4aOVxz.jpeg",
-    title: "Title 6",
-    id: 6,
-  },
-  {
-    url: "https://i.imgur.com/W25tzI2.jpeg",
-    title: "Title 7",
-    id: 7,
-  },
-  {
-    url: "https://i.imgur.com/g9KnrZU.jpeg",
-    title: "Title 8",
-    id: 8,
-  },
-  {
-    url: "https://i.imgur.com/LmWPkY0.jpeg",
-    title: "Title 9",
-    id: 9,
-  },
-  {
-    url: "https://i.imgur.com/EGI8BTg.jpeg",
-    title: "Title 10",
-    id: 10,
-  },
-  {
-    url: "https://i.imgur.com/iEkxCL6.jpeg",
-    title: "Title 11",
-    id: 11,
-  },
-  {
-    url: "https://i.imgur.com/ddzUd6P.jpeg",
-    title: "Title 11",
-    id: 12,
-  },
-  {
-    url: "https://i.imgur.com/peLI5mj.jpeg",
-    title: "Title 11",
-    id: 14,
-  },
-  {
-    url: "https://i.imgur.com/3vm50Ll.jpeg",
-    title: "Title 11",
-    id: 15,
-  },
-  {
-    url: "https://i.imgur.com/zjWXAnc.jpeg",
-    title: "Title 11",
-    id: 16,
-  },
-  {
-    url: "https://i.imgur.com/W2sBb2N.jpeg",
-    title: "Title 11",
-    id: 17,
-  },
-  {
-    url: "https://i.imgur.com/fLoobkg.jpeg",
-    title: "Title 11",
-    id: 18,
-  },
-  {
-    url: "https://i.imgur.com/LwioolW.jpeg",
-    title: "Title 11",
-    id: 18,
-  },
-];
+
 const cards = [
-  {
-    url: "https://i.imgur.com/0ljGFMY.jpeg",
-    title: "Title 1",
-    id: 1,
-  },
-  {
-    url: "https://i.imgur.com/owV4jYU.jpeg",
-    title: "Title 2",
-    id: 2,
-  },
-  {
-    url: "https://i.imgur.com/Ctet7Iw.jpeg",
-    title: "Title 3",
-    id: 3,
-  },
-  {
-    url: "https://i.imgur.com/1lyTROf.jpeg",
-    title: "Title 4",
-    id: 4,
-  },
-  {
-    url: "https://i.imgur.com/WBBjK5l.jpeg",
-    title: "Title 5",
-    id: 5,
-  },
-  {
-    url: "https://i.imgur.com/Gqx4ii9.jpeg",
-    title: "Title 6",
-    id: 6,
-  },
-  {
-    url: "https://i.imgur.com/mQyOHlA.jpeg",
-    title: "Title 7",
-    id: 7,
-  },
-  {
-    url: "https://i.imgur.com/6IpbUwD.jpeg",
-    title: "Title 8",
-    id: 8,
-  },
-  {
-    url: "https://i.imgur.com/4F0G2Pw.jpeg",
-    title: "Title 9",
-    id: 9,
-  },
-  {
-    url: "https://i.imgur.com/z5JbtcG.jpeg",
-    title: "Title 10",
-    id: 10,
-  },
-  {
-    url: "https://i.imgur.com/avk97Nl.jpeg",
-    title: "Title 11",
-    id: 11,
-  },
   {
     url: "https://i.imgur.com/GVGJBPK.jpeg",
     title: "Title 11",
@@ -462,6 +316,61 @@ const cards = [
     url: "https://i.imgur.com/KLucQlD.jpeg",
     title: "Title 11",
     id: 23,
+  },
+  {
+    url: "https://i.imgur.com/0ljGFMY.jpeg",
+    title: "Title 1",
+    id: 1,
+  },
+  {
+    url: "https://i.imgur.com/owV4jYU.jpeg",
+    title: "Title 2",
+    id: 2,
+  },
+  {
+    url: "https://i.imgur.com/Ctet7Iw.jpeg",
+    title: "Title 3",
+    id: 3,
+  },
+  {
+    url: "https://i.imgur.com/1lyTROf.jpeg",
+    title: "Title 4",
+    id: 4,
+  },
+  {
+    url: "https://i.imgur.com/WBBjK5l.jpeg",
+    title: "Title 5",
+    id: 5,
+  },
+  {
+    url: "https://i.imgur.com/Gqx4ii9.jpeg",
+    title: "Title 6",
+    id: 6,
+  },
+  {
+    url: "https://i.imgur.com/mQyOHlA.jpeg",
+    title: "Title 7",
+    id: 7,
+  },
+  {
+    url: "https://i.imgur.com/6IpbUwD.jpeg",
+    title: "Title 8",
+    id: 8,
+  },
+  {
+    url: "https://i.imgur.com/4F0G2Pw.jpeg",
+    title: "Title 9",
+    id: 9,
+  },
+  {
+    url: "https://i.imgur.com/z5JbtcG.jpeg",
+    title: "Title 10",
+    id: 10,
+  },
+  {
+    url: "https://i.imgur.com/avk97Nl.jpeg",
+    title: "Title 11",
+    id: 11,
   },
 ];
 
