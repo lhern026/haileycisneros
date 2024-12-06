@@ -38,21 +38,21 @@ const Projects = () => {
 
   const handleNext = () => {
     if (selectedCard) {
-      const currentIndex = cards.findIndex(
+      const currentIndex = ccards.findIndex(
         (card) => card.id === selectedCard.id
       );
-      const nextIndex = (currentIndex + 1) % cards.length;
-      setSelectedCard(cards[nextIndex]);
+      const nextIndex = (currentIndex + 1) % ccards.length;
+      setSelectedCard(ccards[nextIndex]);
     }
   };
 
   const handlePrev = () => {
     if (selectedCard) {
-      const currentIndex = cards.findIndex(
+      const currentIndex = ccards.findIndex(
         (card) => card.id === selectedCard.id
       );
-      const prevIndex = (currentIndex - 1 + cards.length) % cards.length;
-      setSelectedCard(cards[prevIndex]);
+      const prevIndex = (currentIndex - 1 + ccards.length) % ccards.length;
+      setSelectedCard(ccards[prevIndex]);
     }
   };
 
@@ -72,8 +72,8 @@ const Projects = () => {
 
   return (
     <div className="py-20 max-w-full">
-      <h2 className="text-5xl font-bold mb-12 text-center text-primary">
-        My Projects
+      <h2 className="text-5xl font-bold mb-12 text-center text-primary tracking-tight drop-shadow-md mt-10">
+        Projects
       </h2>
 
       <AnimatePresence>
@@ -142,11 +142,11 @@ const Projects = () => {
           </motion.div>
         )}
       </AnimatePresence>
-      <h2 className="text-5xl font-bold mb-12 text-center text-primary mt-20">
+      <h2 className="text-5xl font-bold mb-12 text-center text-primary mt-20 tracking-wide uppercase border-b-4 border-primary pb-4">
         100 Drawings Project
       </h2>
 
-      <div className="container mx-auto px-6 max-w-7xl">
+      <div className="container mx-auto px-6 max-w-7xl bg-white bg-opacity-10 backdrop-blur-md shadow-lg rounded-lg">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {ccards.map((card) => (
             <Card key={card.id} card={card} onClick={handleCardClick} />
@@ -339,133 +339,6 @@ const ccards = [
     url: "https://i.imgur.com/LwioolW.jpeg",
     title: "Title 11",
     id: 18,
-  },
-];
-const cards = [
-  {
-    url: "https://i.imgur.com/0ljGFMY.jpeg",
-    title: "Title 1",
-    id: 1,
-  },
-  {
-    url: "https://i.imgur.com/owV4jYU.jpeg",
-    title: "Title 2",
-    id: 2,
-  },
-  {
-    url: "https://i.imgur.com/Ctet7Iw.jpeg",
-    title: "Title 3",
-    id: 3,
-  },
-  {
-    url: "https://i.imgur.com/1lyTROf.jpeg",
-    title: "Title 4",
-    id: 4,
-  },
-  {
-    url: "https://i.imgur.com/WBBjK5l.jpeg",
-    title: "Title 5",
-    id: 5,
-  },
-  {
-    url: "https://i.imgur.com/Gqx4ii9.jpeg",
-    title: "Title 6",
-    id: 6,
-  },
-  {
-    url: "https://i.imgur.com/mQyOHlA.jpeg",
-    title: "Title 7",
-    id: 7,
-  },
-  {
-    url: "https://i.imgur.com/6IpbUwD.jpeg",
-    title: "Title 8",
-    id: 8,
-  },
-  {
-    url: "https://i.imgur.com/4F0G2Pw.jpeg",
-    title: "Title 9",
-    id: 9,
-  },
-  {
-    url: "https://i.imgur.com/z5JbtcG.jpeg",
-    title: "Title 10",
-    id: 10,
-  },
-  {
-    url: "https://i.imgur.com/avk97Nl.jpeg",
-    title: "Title 11",
-    id: 11,
-  },
-  {
-    url: "https://i.imgur.com/GVGJBPK.jpeg",
-    title: "Title 11",
-    id: 12,
-  },
-  {
-    url: "https://i.imgur.com/qoBBWoZ.jpeg",
-    title: "Title 11",
-    id: 14,
-  },
-  {
-    url: "https://i.imgur.com/fEmLXPg.jpeg",
-    title: "Title 11",
-    id: 15,
-  },
-  {
-    url: "https://i.imgur.com/spjTo0E.jpeg",
-    title: "Title 11",
-    id: 16,
-  },
-  {
-    url: "https://i.imgur.com/D1yrX2L.jpeg",
-    title: "Title 11",
-    id: 17,
-  },
-  {
-    url: "https://i.imgur.com/o0Xq2tt.jpeg",
-    title: "Title 11",
-    id: 18,
-  },
-  {
-    url: "https://i.imgur.com/2HelsKI.jpeg",
-    title: "Title 11",
-    id: 19,
-  },
-  {
-    url: "https://i.imgur.com/0ETtDVO.jpeg",
-    title: "Title 11",
-    id: 20,
-  },
-  {
-    url: "https://i.imgur.com/OzBM2n0.jpeg",
-    title: "Title 11",
-    id: 21,
-  },
-  {
-    url: "https://i.imgur.com/Q1exYqo.jpeg",
-    title: "Title 11",
-    id: 22,
-  },
-  {
-    url: "https://i.imgur.com/1BQrg2C.jpeg",
-    title: "Title 11",
-    id: 23,
-  },
-  {
-    url: "https://i.imgur.com/cG2B98A.jpeg",
-    title: "Title 11",
-    id: 23,
-  },
-  {
-    url: "https://i.imgur.com/1LIi0MW.jpeg",
-    title: "Title 11",
-    id: 23,
-  },
-  {
-    url: "https://i.imgur.com/KLucQlD.jpeg",
-    title: "Title 11",
-    id: 23,
   },
 ];
 
